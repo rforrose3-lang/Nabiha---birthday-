@@ -1,0 +1,503 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<meta name="theme-color" content="#fff0f5">  
+<title>For Nabiha, My Bestie 🎀</title>  <style>  
+:root {  
+  --pink: #f5a9c6;  
+  --deep: #b84f7b;  
+  --ink: #70445a;  
+  --cream: #fffaf7;  
+  --line: #f5d6e3;  
+}  
+* { box-sizing: border-box; }  
+html { scroll-behavior: smooth; }  
+body {  
+  margin: 0;  
+  color: var(--ink);  
+  font-family: "Trebuchet MS", Arial, sans-serif;  
+  background:  
+    radial-gradient(ellipse at 10% 0%, #ffdfed, transparent 45%),  
+    linear-gradient(145deg, #fffaf7, #ffedf4, #fff4ef);  
+  overflow-x: hidden;  
+}  
+button { font: inherit; }  
+button:focus-visible, a:focus-visible {  
+  outline: 3px solid var(--deep);  
+  outline-offset: 4px;  
+}  
+.page {  
+  width: 100%;  
+  min-height: 100svh;  
+  display: grid;  
+  place-items: center;  
+  padding: 28px 15px;  
+}  
+.card {  
+  position: relative;  
+  z-index: 1;  
+  width: 100%;  
+  max-width: 460px;  
+  padding: 30px 22px;  
+  text-align: center;  
+  background: #ffffffd9;  
+  border: 1px solid #ffffff;  
+  border-radius: 30px;  
+  box-shadow: 0 18px 55px #c9658e1c;  
+  backdrop-filter: blur(12px);  
+}  
+.eyebrow {  
+  color: var(--deep);  
+  font-size: 10px;  
+  letter-spacing: 3px;  
+  text-transform: uppercase;  
+  font-weight: bold;  
+}  
+h1, h2 {  
+  font-family: Georgia, "Times New Roman", serif;  
+  font-weight: normal;  
+  color: var(--deep);  
+}  
+h1 {  
+  font-size: clamp(38px, 10vw, 53px);  
+  line-height: 1.08;  
+  margin: 15px 0;  
+}  
+h2 { font-size: 29px; line-height: 1.2; }  
+p { font-size: 14px; line-height: 1.85; }  
+.bow {  
+  font-size: 48px;  
+  margin: 8px 0;  
+  animation: bob 2.5s ease-in-out infinite;  
+}  
+.btn {  
+  border: none;  
+  border-radius: 999px;  
+  padding: 13px 19px;  
+  margin: 8px 4px;  
+  color: white;  
+  background: linear-gradient(135deg, #ed9dbb, #c95c89);  
+  box-shadow: 0 7px 20px #c95c892c;  
+  font-weight: bold;  
+  cursor: pointer;  
+  transition: transform .2s;  
+}  
+.btn:hover { transform: translateY(-2px); }  
+.btn.secondary {  
+  background: #fff0f5;  
+  color: var(--deep);  
+  border: 1px solid var(--line);  
+}  
+.gift {  
+  display: block;  
+  margin: 12px auto;  
+  padding: 0;  
+  border: 0;  
+  background: transparent;  
+  font-size: 85px;  
+  cursor: pointer;  
+  animation: bob 2.5s ease-in-out infinite;  
+}  
+.hidden { display: none !important; }  
+.footer {  
+  margin-top: 23px;  
+  font-size: 11px;  
+  opacity: .7;  
+}  
+.envelope {  
+  width: min(250px, 75vw);  
+  height: 160px;  
+  margin: 28px auto 20px;  
+  background: #f2a7c3;  
+  border-radius: 8px;  
+  position: relative;  
+  cursor: pointer;  
+  box-shadow: 0 12px 24px #b9507725;  
+}  
+.envelope::before {  
+  content: "";  
+  position: absolute;  
+  inset: 0;  
+  background: #f9c6d9;  
+  clip-path: polygon(0 0, 50% 58%, 100% 0);  
+  z-index: 2;  
+  transform-origin: top;  
+  transition: transform .6s ease;  
+}  
+.envelope::after {  
+  content: "♥";  
+  position: absolute;  
+  top: 48%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+  color: var(--deep);  
+  font-size: 28px;  
+  z-index: 3;  
+}  
+.envelope.open::before { transform: rotateX(180deg); }  
+.envelope.open::after { opacity: 0; }  
+.letter {  
+  text-align: left;  
+  margin-top: 22px;  
+  padding: 22px 20px;  
+  border-radius: 20px;  
+  border: 1px solid var(--line);  
+  background: var(--cream);  
+  animation: appear .5s ease both;  
+}  
+.letter p { font-size: 14px; }  
+.signature {  
+  text-align: right;  
+  color: var(--deep);  
+  font-family: Georgia, serif;  
+  font-size: 21px !important;  
+}  
+.cake { font-size: 65px; margin: 15px; }  
+.dots { color: #e8a2bf; letter-spacing: 7px; margin: 18px; }  
+  
+/* Memories gallery */  
+.gallery {  
+  display: grid;  
+  grid-template-columns: repeat(2, minmax(0, 1fr));  
+  gap: 12px;  
+  margin: 22px 0;  
+}  
+.photo {  
+  padding: 8px 8px 13px;  
+  border-radius: 7px;  
+  background: white;  
+  box-shadow: 0 5px 18px #bd66881c;  
+  transform: rotate(-2deg);  
+}  
+.photo:nth-child(even) { transform: rotate(2deg); }  
+.photo img {  
+  width: 100%;  
+  height: 155px;  
+  object-fit: cover;  
+  border-radius: 4px;  
+  display: block;  
+  background: #ffe5ef;  
+}  
+.photo figcaption {  
+  font-family: Georgia, serif;  
+  font-size: 13px;  
+  margin-top: 10px;  
+  color: var(--deep);  
+}  
+.photo-placeholder {  
+  height: 155px;  
+  display: grid;  
+  place-items: center;  
+  padding: 10px;  
+  border-radius: 4px;  
+  background: linear-gradient(145deg, #ffe4ee, #fff2e8);  
+  color: #b85d82;  
+  font-size: 13px;  
+}  
+.music-box {  
+  padding: 13px;  
+  margin: 15px 0;  
+  border-radius: 17px;  
+  background: #fff2f7;  
+  border: 1px solid var(--line);  
+}  
+#musicStatus { font-size: 12px; }  
+.floaty {  
+  position: fixed;  
+  bottom: -35px;  
+  pointer-events: none;  
+  z-index: 0;  
+  animation: rise linear forwards;  
+}  
+.confetti {  
+  position: fixed;  
+  top: -15px;  
+  width: 9px;  
+  height: 14px;  
+  pointer-events: none;  
+  z-index: 5;  
+  animation: fall 3s linear forwards;  
+}  
+@keyframes bob {  
+  0%,100% { transform: translateY(0) rotate(-3deg); }  
+  50% { transform: translateY(-8px) rotate(3deg); }  
+}  
+@keyframes appear {  
+  from { opacity: 0; transform: translateY(12px); }  
+  to { opacity: 1; transform: translateY(0); }  
+}  
+@keyframes rise {  
+  to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }  
+}  
+@keyframes fall {  
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }  
+}  
+@media (max-width: 360px) {  
+  .card { padding: 25px 15px; }  
+  .photo img, .photo-placeholder { height: 125px; }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+  *, *::before, *::after {  
+    animation-duration: .01ms !important;  
+    animation-iteration-count: 1 !important;  
+    scroll-behavior: auto !important;  
+  }  
+}  
+</style>  </head>  <body>  <main class="page">  
+  <!-- WELCOME -->  
+  <section class="card" id="welcome">  
+    <div class="eyebrow">a little surprise for someone special</div>  
+    <div class="bow">🎀</div>  
+    <p>To my favourite girl...</p>  
+    <h1>Happy Birthday,<br>Nabiha!</h1>  
+    <p>  
+      Today is all about you, Bestie. 💗<br>  
+      I made a tiny little something just for you.  
+    </p>  
+    <button class="gift" id="gift" aria-label="Open the birthday gift">  
+      🎁  
+    </button>  
+    <p>Go on, birthday girl. Tap your surprise! ♡</p>  
+    <button class="btn" id="start">Open your surprise ✨</button>  
+    <div class="footer">made with love, just for Nabiha ♡</div>  
+  </section>    <!-- LETTER -->    <section class="card hidden" id="letterScreen">  
+    <div class="eyebrow">sealed with all my love</div>  
+    <div class="bow">💌</div>  
+    <h2>A little letter<br>for my Bestie</h2>  
+    <p>There's something I want you to know...</p>  <div class="envelope" id="envelope"  
+  role="button" tabindex="0" aria-label="Open the birthday letter"></div>  
+<p>Tap the envelope to read your letter ♡</p>  
+
+<article class="letter hidden" id="letter">  
+  <p>My dearest Nabiha, 🎀</p>  
+
+  <p>  
+    Happy Birthday to my beautiful bestie! 💗  
+    I hope today brings you the biggest smiles, the  
+    sweetest surprises, and all the happiness your heart  
+    can possibly hold.  
+  </p>  
+
+  <p>  
+    I'm so grateful to have you in my life. Thank you for  
+    the laughs, the memories, the little moments, and  
+    simply being the wonderful person you are. Some people  
+    make ordinary days feel special, and you are one of  
+    those people for me.  
+  </p>  
+
+  <p>  
+    I hope this new chapter brings you closer to every  
+    dream you've been quietly wishing for. May you always  
+    find reasons to smile, courage when things get hard,  
+    and people who love you exactly as you are.  
+  </p>  
+
+  <p>  
+    No matter how busy life gets or how much things change,  
+    I will always be cheering for you. You deserve a world  
+    full of beautiful things, Bestie. Never forget that. 🫶  
+  </p>  
+
+  <p>Now make that pretty smile extra big. It's YOUR day! 🎂</p>  
+  <p class="signature">Forever your bestie, ♡<br>With lots of love</p>  
+</article>  
+
+<button class="btn hidden" id="toMemories">  
+  Our little memories 📸  
+</button>
+
+  </section>    <!-- PHOTOS -->    <section class="card hidden" id="memories">  
+    <div class="eyebrow">little moments, big memories</div>  
+    <div class="bow">📸</div>  
+    <h2>Us, in little pieces ♡</h2>  
+    <p>  
+      Every picture holds a little moment I'd love to keep.  
+      Here are some memories for my favourite girl.  
+    </p>  <div class="gallery">  
+  <figure class="photo">  
+    <img src="photo1.jpg" alt="A favourite memory with Nabiha"  
+      onerror="this.hidden=true;this.nextElementSibling.hidden=false">  
+    <div class="photo-placeholder" hidden>Add photo1.jpg</div>  
+    <figcaption>Our favourite moments 🌷</figcaption>  
+  </figure>  
+  <figure class="photo">  
+    <img src="photo2.jpg" alt="A happy moment with Nabiha"  
+      onerror="this.hidden=true;this.nextElementSibling.hidden=false">  
+    <div class="photo-placeholder" hidden>Add photo2.jpg</div>  
+    <figcaption>Pure happiness ♡</figcaption>  
+  </figure>  
+  <figure class="photo">  
+    <img src="photo3.jpg" alt="A special friendship memory"  
+      onerror="this.hidden=true;this.nextElementSibling.hidden=false">  
+    <div class="photo-placeholder" hidden>Add photo3.jpg</div>  
+    <figcaption>My favourite human 🎀</figcaption>  
+  </figure>  
+  <figure class="photo">  
+    <img src="photo4.jpg" alt="A friendship memory to treasure"  
+      onerror="this.hidden=true;this.nextElementSibling.hidden=false">  
+    <div class="photo-placeholder" hidden>Add photo4.jpg</div>  
+    <figcaption>More memories to come ✨</figcaption>  
+  </figure>  
+</div>  
+
+<div class="music-box">  
+  <div>🎶 A little birthday soundtrack</div>  
+  <button class="btn" id="musicButton">▶ Play our song</button>  
+  <p id="musicStatus" aria-live="polite">  
+    Add your music file to bring this moment to life.  
+  </p>  
+  <audio id="birthdayMusic" src="birthday-song.mp3"  
+    preload="none" loop></audio>  
+</div>  
+
+<button class="btn" id="toFinal">One last surprise 💗</button>
+
+  </section>    <!-- FINAL SURPRISE -->    <section class="card hidden" id="finalScreen">  
+    <div class="eyebrow">a wish, just for you</div>  
+    <div class="cake">🎂</div>  
+    <h1>Happy Birthday,<br>Nabiha!</h1>  
+    <div class="dots">♡ ✧ ♡ ✧ ♡</div>  
+    <p>  
+      May your days be soft, your dreams be big,  
+      your heart be happy, and your year be filled with  
+      beautiful things you never saw coming.  
+    </p>  
+    <h2>Make a wish, Bestie! 🌸</h2>  
+    <p>Close your eyes and wish for something wonderful. ✨</p>  
+    <button class="btn" id="wish">Send my wish into the universe 💖</button>  
+    <p id="wishMessage" class="hidden" aria-live="polite">  
+      Wish sent! May something beautiful find you soon. 🦋  
+    </p>  
+    <button class="btn secondary" id="replay">Replay the magic ↻</button>  
+    <div class="footer">a tiny website, a whole lot of love ♡</div>  
+  </section>  
+</main>  <script>  
+const screens = [  
+  document.getElementById("welcome"),  
+  document.getElementById("letterScreen"),  
+  document.getElementById("memories"),  
+  document.getElementById("finalScreen")  
+];  
+  
+const envelope = document.getElementById("envelope");  
+const letter = document.getElementById("letter");  
+const toMemories = document.getElementById("toMemories");  
+const music = document.getElementById("birthdayMusic");  
+const musicButton = document.getElementById("musicButton");  
+const musicStatus = document.getElementById("musicStatus");  
+  
+function showScreen(target) {  
+  screens.forEach(screen => screen.classList.add("hidden"));  
+  target.classList.remove("hidden");  
+  window.scrollTo({ top: 0, behavior: "smooth" });  
+}  
+  
+function openLetter() {  
+  if (!letter.classList.contains("hidden")) return;  
+  envelope.classList.add("open");  
+  letter.classList.remove("hidden");  
+  toMemories.classList.remove("hidden");  
+  confetti(45);  
+}  
+  
+document.getElementById("start").addEventListener("click", () => {  
+  showScreen(screens[1]);  
+});  
+document.getElementById("gift").addEventListener("click", () => {  
+  showScreen(screens[1]);  
+});  
+  
+envelope.addEventListener("click", openLetter);  
+envelope.addEventListener("keydown", event => {  
+  if (event.key === "Enter" || event.key === " ") {  
+    event.preventDefault();  
+    openLetter();  
+  }  
+});  
+  
+toMemories.addEventListener("click", () => showScreen(screens[2]));  
+document.getElementById("toFinal").addEventListener("click", () => {  
+  showScreen(screens[3]);  
+  confetti(120);  
+});  
+  
+document.getElementById("wish").addEventListener("click", () => {  
+  document.getElementById("wishMessage").classList.remove("hidden");  
+  confetti(60);  
+});  
+  
+document.getElementById("replay").addEventListener("click", () => {  
+  music.pause();  
+  music.currentTime = 0;  
+  musicButton.textContent = "▶ Play our song";  
+  musicStatus.textContent = "Add your music file to bring this moment to life.";  
+  envelope.classList.remove("open");  
+  letter.classList.add("hidden");  
+  toMemories.classList.add("hidden");  
+  document.getElementById("wishMessage").classList.add("hidden");  
+  showScreen(screens[0]);  
+});  
+  
+musicButton.addEventListener("click", async () => {  
+  if (music.paused) {  
+    try {  
+      await music.play();  
+      musicButton.textContent = "❚❚ Pause our song";  
+      musicStatus.textContent = "Playing your birthday soundtrack ♡";  
+    } catch (error) {  
+      musicStatus.textContent =  
+        "Music file not found or unable to play. Add birthday-song.mp3 beside index.html.";  
+    }  
+  } else {  
+    music.pause();  
+    musicButton.textContent = "▶ Play our song";  
+    musicStatus.textContent = "Paused — tap play whenever you're ready.";  
+  }  
+});  
+  
+music.addEventListener("ended", () => {  
+  musicButton.textContent = "▶ Play our song";  
+});  
+music.addEventListener("error", () => {  
+  musicStatus.textContent =  
+    "Add a supported audio file named birthday-song.mp3 beside index.html.";  
+});  
+  
+function confetti(amount) {  
+  const colors = ["#f4a6c1", "#ffd166", "#d9b8ff", "#ff8fa3", "#fff0a8"];  
+  for (let i = 0; i < amount; i++) {  
+    const piece = document.createElement("span");  
+    piece.className = "confetti";  
+    piece.style.left = Math.random() * 100 + "vw";  
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];  
+    piece.style.borderRadius = Math.random() > .5 ? "50%" : "2px";  
+    piece.style.animationDelay = Math.random() * .6 + "s";  
+    piece.style.animationDuration = 2.4 + Math.random() * 1.7 + "s";  
+    document.body.appendChild(piece);  
+    piece.addEventListener("animationend", () => piece.remove());  
+  }  
+}  
+  
+const symbols = ["♡", "♥", "✧", "୨୧", "🌸"];  
+function floatingHeart() {  
+  const item = document.createElement("span");  
+  item.className = "floaty";  
+  item.textContent = symbols[Math.floor(Math.random() * symbols.length)];  
+  item.style.left = Math.random() * 100 + "vw";  
+  item.style.fontSize = 14 + Math.random() * 18 + "px";  
+  item.style.color = ["#e98eb3", "#d9a5d5", "#f5c0cf"][  
+    Math.floor(Math.random() * 3)  
+  ];  
+  item.style.animationDuration = 7 + Math.random() * 7 + "s";  
+  document.body.appendChild(item);  
+  item.addEventListener("animationend", () => item.remove());  
+}  
+  
+for (let i = 0; i < 8; i++) {  
+  setTimeout(floatingHeart, i * 300);  
+}  
+setInterval(floatingHeart, 1300);  
+</script>  </body>  
+  </html>
